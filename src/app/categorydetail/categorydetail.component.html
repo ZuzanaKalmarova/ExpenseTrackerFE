@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">Category</mat-toolbar>
+<div class="error" *ngIf="errorMsg">
+  <h4>Error</h4>
+  <p>{{errorMsg}}</p>
+</div>
+<form novalidate [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <!-- <p>
+      <mat-form-field>
+        <input matInput formControlName="id" placeholder="id" type="text">
+      </mat-form-field>
+    </p> -->
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="name" type="text">
+        <mat-error *ngIf="categoryForm.get('name').hasError('required') && categoryForm.get('name').touched">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <textarea matInput formControlName="description" placeholder="description" rows=3></textarea>
+        <mat-error *ngIf="categoryForm.get('description').hasError('required') && categoryForm.get('description').touched">
+            Description is required
+          </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="budget" placeholder="budget" type="number">
+        <mat-error *ngIf="categoryForm.get('budget').hasError('required') && categoryForm.get('budget').touched">
+            Budget is required
+          </mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button [disabled]="categoryForm.invalid">Save</button>
+  </mat-dialog-actions>
+</form>
+

@@ -1,0 +1,1 @@
+export const BASEURL: String = 'http://localhost:3000/';

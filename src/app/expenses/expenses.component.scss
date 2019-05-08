@@ -1,0 +1,23 @@
+@media (max-width: 576px) {
+    .mat-header-cell {
+        font-size: 11px;
+        padding: 0px;
+    }
+    
+    .mat-cell {
+        font-size: 11px;
+        padding: 0px;
+    }
+    
+    .mat-icon {
+        font-size: 11px;
+        height: 12px;
+        width: 12px;
+    }
+    
+    .mattab .mat-button {
+        min-width: 15px;
+        padding: 0px 10px;
+    }
+}
+

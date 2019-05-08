@@ -1,0 +1,55 @@
+<mat-toolbar color="primary">Expense</mat-toolbar>
+<div class="error" *ngIf="errorMsg">
+  <h4>Error</h4>
+  <p>{{errorMsg}}</p>
+</div>
+<form novalidate [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="description" placeholder="description" type="text"/>
+        <mat-error *ngIf="expenseForm.get('description').hasError('required') && expenseForm.get('description').touched">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+          <mat-select formControlName="category" placeholder="select category">
+              <mat-option *ngFor="let category of categories" [value]="category.name">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="expenseForm.get('category').hasError('required') && expenseForm.get('category').touched">
+                Category is required
+            </mat-error>
+            <div class="error" *ngIf="catError">
+              <h4>Error</h4>
+              <p>{{catError}}</p>
+            </div>
+
+      </mat-form-field>
+      
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="amount" placeholder="amount" type="number"/>
+        <mat-error *ngIf="expenseForm.get('amount').hasError('required') && expenseForm.get('amount').touched">
+            Amount is required
+          </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="date" placeholder="date" type="date"/>
+        <mat-error *ngIf="expenseForm.get('date').hasError('required') && expenseForm.get('date').touched">
+            Date is required
+          </mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button [disabled]="expenseForm.invalid">Save</button>
+  </mat-dialog-actions>
+</form>

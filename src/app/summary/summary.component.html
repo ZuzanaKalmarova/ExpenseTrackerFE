@@ -1,0 +1,15 @@
+<div>
+  <div class="error" *ngIf="errorMsg">
+    <h4>Error</h4>
+    <p>{{errorMsg}}</p>
+  </div>
+  <mat-card class="sumcard" *ngFor="let summary of summaries">
+    <mat-card-header>
+        <mat-card-title>{{ summary.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <ngb-progressbar type= {{summary.type}} [value]="summary.value">{{summary.value}}%</ngb-progressbar>
+    </mat-card-content>
+  </mat-card>
+</div>
+

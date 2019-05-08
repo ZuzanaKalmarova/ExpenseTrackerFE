@@ -1,0 +1,47 @@
+<div class="containerX">
+
+  
+    <div class="subhead">
+         <a mat-raised-button (click)="openCategoryDetailForm()">New category</a>
+      
+    </div>
+  
+
+  <div class="categories"
+    fxLayout="row wrap" 
+    fxLayout.lt-sm="column" 
+    fxLayoutGap="2em" 
+    fxLayoutAlign="start strech">
+    
+      <ng-container *ngFor="let category of categories">
+        <mat-card class="catcard"
+        fxFlex="0 1 calc(25% - 2em)"
+        fxFlex.lt-md="0 1 calc(50% - 2em)" 
+        fxFlex.lt-sm="100%">
+          <mat-card-header>
+            <mat-card-title>{{category.name}}</mat-card-title>
+            <mat-card-subtitle>Budget: {{category.budget | currency: 'EUR'}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>{{category.description}}</mat-card-content>
+          <mat-card-actions layout-align="center end">
+              <button mat-raised-button (click)="openCategoryDetailForm(category)">Update</button>
+              <button mat-raised-button (click)="deleteCategory(category)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+        <!-- <h3 matLine>{{category.name}}</h3>
+        <p matLine>
+          <span matLine>{{category.description}}</span>
+          <span matLine>Budget: {{category.budget | currency:'EUR'}}</span>
+        </p>
+        <p>
+          <button mat-button (click)="openCategoryDetailForm(category)">Update</button>
+        </p> -->
+      </ng-container>
+    
+  </div>
+  <div class = "error" *ngIf="errorMsg">
+    <h4>Error</h4>
+    <p>{{errorMsg}}</p>
+  </div>
+
+</div>

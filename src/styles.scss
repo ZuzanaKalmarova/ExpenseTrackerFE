@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome';
+
+//some basic resets
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    background: #eee;
+    
+}
+
+.subhead {
+    background-color: #6027ad;
+    padding: 1em;
+    text-align: center;
+}
+
+.error {
+    color: #ca0707;
+    font-weight: bold;
+}
+
+.error h4 {
+    font-weight: bold;
+    font-size: 1.2em;
+}
