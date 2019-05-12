@@ -1,7 +1,9 @@
+import { Category } from './category'
+
 export class Expense {
-    id: string;
+    id: number;
     description: string;
-    category: string;
+    category: Category;
     amount: number;
     date: string;
 }

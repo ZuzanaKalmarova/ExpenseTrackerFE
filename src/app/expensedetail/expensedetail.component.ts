@@ -18,6 +18,7 @@ export class ExpensedetailComponent implements OnInit {
   categories: Category[];
   catError: String;
   errorMsg: String;
+  
 
   constructor(private fb: FormBuilder,
     private expensesService: ExpensesService,
@@ -39,14 +40,18 @@ export class ExpensedetailComponent implements OnInit {
     
   }
 
-  createForm() {
+  createForm() {   
     this.expenseForm = this.fb.group({
       description: [this.expense.description, Validators.required],
-      category: [this.expense.category, Validators.required],
       amount: [this.expense.amount, Validators.required],
-      date: [this.expense.date, Validators.required]
+      date: [this.expense.date, Validators.required],
+      category: [this.expense.category, Validators.required]
     });
-    //console.log(this.categories);
+    //console.log(catname);
+    //this.expenseForm.setValue({'category':this.expense.category});
+    //this.expenseForm.get('category').setValue(this.expense.category);
+    //console.log(this.expenseForm.controls['category'].value.name);
+    
   }
 
   onSubmit() {
@@ -61,6 +66,10 @@ export class ExpensedetailComponent implements OnInit {
       this.expensesService.updateExpense(this.expense).subscribe( () => this.dialogRef.close(),
                                                                   errmes => this.errorMsg = errmes);
     }
+  }
+
+  compareFn(cat1: Category, cat2: Category): boolean {
+    return cat1 && cat2 ? cat1.id === cat2.id : cat1 === cat2;
   }
 
 }

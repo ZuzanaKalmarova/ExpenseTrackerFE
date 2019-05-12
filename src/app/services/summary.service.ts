@@ -11,6 +11,7 @@ import { BASEURL } from '../shared/baseurl';
 })
 export class SummaryService {
 
+ // private summaryUrl = "http://localhost:8080/summary";
   private summaryUrl = BASEURL + 'summary';
 
   constructor(private http: HttpClient,

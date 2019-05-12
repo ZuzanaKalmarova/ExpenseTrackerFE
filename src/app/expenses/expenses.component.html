@@ -14,7 +14,7 @@
       </ng-container>
       <ng-container matColumnDef="category">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
-        <mat-cell *matCellDef="let expense"> {{expense.category}} </mat-cell>
+        <mat-cell *matCellDef="let expense"> {{expense.category.name}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="amount">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>

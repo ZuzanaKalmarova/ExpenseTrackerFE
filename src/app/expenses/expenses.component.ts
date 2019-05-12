@@ -41,11 +41,14 @@ export class ExpensesComponent implements OnInit {
     if(!expense) {
       expense = new Expense();
     }
+    //console.log(expense);
     let dialogRef = this.dialog.open(ExpensedetailComponent, {data: {
       exp: expense,
       cat: this.categories,
       err: this.errorMsg}
     });
+    
+    
   }
 
   getAllExpenses() {

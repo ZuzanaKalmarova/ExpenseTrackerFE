@@ -12,6 +12,7 @@ import { BASEURL } from '../shared/baseurl';
 })
 export class CategoryService {
 
+  //private categoryUrl = "http://localhost:8080/categories";
   private categoryUrl = BASEURL + 'categories';
   
   constructor(private http: HttpClient,
