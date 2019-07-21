@@ -22,4 +22,9 @@ export class SummaryService {
     .pipe(catchError(this.httpErrMsgService.handleError));
   }
 
+  getSummaryByMonth(year:number, month:number): Observable<Summary[]> {
+    return this.http.get<Summary[]>(`${this.summaryUrl}/${year}/${month}`)
+    .pipe(catchError(this.httpErrMsgService.handleError));
+  }
+
 }

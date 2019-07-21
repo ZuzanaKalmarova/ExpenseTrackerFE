@@ -1,4 +1,9 @@
 @media (max-width: 576px) {
+    .mat-form-field .mat-form-field-infix {
+        //min-width: 90px;
+        width: 90px;
+    }
+
     .mat-header-cell {
         font-size: 11px;
         padding: 0px;
@@ -19,5 +24,7 @@
         min-width: 15px;
         padding: 0px 10px;
     }
+
+    
 }
 

@@ -2,6 +2,25 @@
   <div class="subhead">
     <button mat-raised-button (click)="openExpenseDetailForm()">New expense</button>
   </div>
+  <div class="subhead">
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <mat-select [(ngModel)]="selectedYear" (ngModelChange)='onYearChange($event)'>
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{year}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Month</mat-label>
+      <mat-select [(ngModel)]="selectedMonth" (ngModelChange)='onMonthChange($event)'>
+        <mat-option *ngFor="let month of months" [value]="month.num">
+          {{month.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <button mat-raised-button (click)="getExpensesByMonth()">Go</button> -->
+  </div>
   <div class="error" *ngIf="errorMsg">
     <h4>Error</h4>
     <p>{{errorMsg}}</p>

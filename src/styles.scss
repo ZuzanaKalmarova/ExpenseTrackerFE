@@ -1,8 +1,11 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'variables';
 @import '../node_modules/font-awesome/scss/font-awesome';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 //some basic resets
+
+
 
 body {
     padding: 0;
@@ -13,10 +16,11 @@ body {
 }
 
 .subhead {
-    background-color: #6027ad;
+    background-color: #8b5dca;
     padding: 1em;
     text-align: center;
 }
+
 
 .error {
     color: #ca0707;
@@ -26,4 +30,14 @@ body {
 .error h4 {
     font-weight: bold;
     font-size: 1.2em;
+}
+
+@media (max-width: 576px) {
+    .mat-form-field .mat-form-field-infix {
+        //min-width: 90px;
+        width: 90px;
+    }
+    .subhead {
+        padding: 0;
+    }
 }

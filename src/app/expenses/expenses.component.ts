@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExpensedetailComponent } from '../expensedetail/expensedetail.component';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../shared/category';
+import { YEARS, MONTHS } from '../shared/dates';
 
 @Component({
   selector: 'app-expenses',
@@ -21,6 +22,12 @@ export class ExpensesComponent implements OnInit {
   dataSource = new MatTableDataSource<Expense>(this.expenses);
   displayedColumns = ['description', 'category', 'amount', 'date', 'actions'];
   errorMsg: String;
+  years = YEARS;
+  months = MONTHS;
+  // selectedYear: number;
+  // selectedMonth: number;
+  year = 0;
+  month = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -62,6 +69,26 @@ export class ExpensesComponent implements OnInit {
     if(confirm('Are you sure you want to delete this record?')) {
       this.expensesService.deleteExpense(expense).subscribe(() => this.getAllExpenses(),
                                                             errmes => this.errorMsg = errmes);
+    }
+  }
+
+  getExpensesByMonth() {
+    this.expensesService.getExpensesByMonth(this.year, this.month)
+    .subscribe(expenses => this.dataSource.data = expenses,
+                errmes => this.errorMsg = errmes);
+  }
+
+  onYearChange(value: any) {
+    this.year = value;
+    if (this.month != 0) {
+      this.getExpensesByMonth();
+    }
+  }
+
+  onMonthChange(value: any) {
+    this.month = value;
+    if (this.year != 0) {
+      this.getExpensesByMonth();
     }
   }
 

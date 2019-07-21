@@ -22,6 +22,11 @@ export class ExpensesService {
     .pipe(catchError(this.httpErrMsgService.handleError));
   }
 
+  getExpensesByMonth(year: number, month: number): Observable<Expense []> {
+    return this.http.get<Expense[]>(`${this.expenseUrl}/${year}/${month}`)
+    .pipe(catchError(this.httpErrMsgService.handleError));
+  }
+
   addExpense(expense: Expense): Observable<Expense> {
     return this.http.post<Expense>(this.expenseUrl, expense)
     .pipe(catchError(this.httpErrMsgService.handleError));
